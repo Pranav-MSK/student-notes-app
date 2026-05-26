@@ -69,10 +69,7 @@ body{
 .container{
     width:100%;
     max-width:500px;
-    background:white;
-    width:500px;
     background:var(--surface-color);
-
     padding:20px;
     border-radius:10px;
     box-shadow:0px 0px 10px var(--shadow-color);
@@ -87,7 +84,7 @@ body{
 .nav-link{
     display:inline-block;
     text-decoration:none;
-    color:#007bff;
+    color:var(--primary-bg);
     font-weight:bold;
 }
 
@@ -107,7 +104,7 @@ body{
 }
 
 .card{
-    background:#ffffcc;
+    background:var(--surface-2-color);
     padding:15px;
     margin-top:15px;
     border-radius:5px;
@@ -151,9 +148,9 @@ body{
     align-items:center;
     gap:10px;
     padding:10px;
-    border:1px solid #ddd;
+    border:1px solid var(--border-color);
     border-radius:5px;
-    background:#fff;
+    background:var(--surface-color);
     cursor:pointer;
 }
 
@@ -194,8 +191,8 @@ body{
 
 .stat{
     width:33.33%;
-    background:#fff;
-    border:1px solid #ddd;
+    background:var(--surface-color);
+    border:1px solid var(--border-color);
     border-radius:5px;
     padding:10px;
 }
@@ -211,22 +208,10 @@ body{
     font-weight:bold;
 }
 
-@media (max-width: 600px){
-    body{
-        padding:20px;
-    }
-
-    .stats{
-        flex-direction:column;
-    }
-
-    .stat{
-        width:100%;
-    }
-}
-
 h1{
     text-align:center;
+}
+
 .app-header{
     display:flex;
     align-items:center;
@@ -303,7 +288,6 @@ textarea{
                 color 0.3s ease,
                 border-color 0.3s ease;
 }
-
 
 /* Search & filters */
 .search-area{
@@ -539,11 +523,6 @@ button:focus-visible{
 .edit-btn:focus-visible{
     outline:3px solid color-mix(in srgb, var(--primary-bg) 60%, transparent);
     outline-offset:2px;
-
-
-    transition: background-color 0.3s ease,
-                color 0.3s ease;
-
 }
 
 .delete-btn{
@@ -556,61 +535,6 @@ button:focus-visible{
     width:auto;
     padding:5px 10px;
     cursor:pointer;
-}
-
-.backup-panel {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px dashed #ddd;
-    border-radius: 5px;
-    background: #fafafa;
-}
-
-.backup-panel h3 {
-    font-size: 11px;
-    color: #777;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-}
-
-.backup-actions {
-    display: flex;
-    gap: 12px;
-}
-
-/* Unified style rule for both the button and the label */
-.backup-btn {
-    flex: 1;
-    display: inline-block;
-    text-align: center;
-    background: #f0f0f0;
-    color: #444;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 8px 0; /* Vertical padding only to ensure matching heights */
-    font-size: 13px;
-    margin: 10px 0px 0px;
-    font-weight: 500;
-    cursor: pointer;
-    user-select: none;
-    transition: all 0.15s ease-in-out;
-    box-sizing: border-box; /* Eliminates box model variations */
-    font-family: inherit;
-}
-
-.backup-btn:hover {
-    background: #e5e5e5;
-    border-color: #bbb;
-    color: #222;
-}
-
-.backup-btn:active {
-    background: #dadada;
-}
-
-
     border-radius:6px;
 
     transition: background-color 0.3s ease,
@@ -627,25 +551,64 @@ button:focus-visible{
     outline-offset:2px;
 }
 
+.backup-panel {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px dashed var(--border-color);
+    border-radius: 5px;
+    background: var(--input-bg);
+}
+
+.backup-panel h3 {
+    font-size: 11px;
+    color: var(--muted-text-color);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.backup-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.backup-btn {
+    flex: 1;
+    display: inline-block;
+    text-align: center;
+    background: var(--surface-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 8px 0;
+    font-size: 13px;
+    margin: 10px 0px 0px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s ease-in-out;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.backup-btn:hover {
+    background: var(--shadow-color-soft);
+    color: var(--text-color);
+}
+
 /* =========================
-   Responsive
+   Header, Footer & Sidebar Layouts
    ========================= */
-@media (max-width: 520px){
-    body{ padding:20px; }
-    .container{ width:100%; }
-}
-
-}
-
-/* Header styles */
 .site-header{
-    background:#007bff;
-    color:white;
+    background:var(--primary-bg);
+    color:var(--primary-text);
     padding:18px 20px;
     border-radius:10px;
     margin-bottom:16px;
     text-align:center;
-    width:500px;
+    width:100%;
+    max-width:680px;
     box-shadow:0px 2px 8px rgba(0,0,0,0.08);
 }
 .site-header h1{
@@ -654,12 +617,11 @@ button:focus-visible{
     font-weight:700;
 }
 
-/* Footer styles */
 .site-footer{
     width:100%;
     max-width:680px;
-    background:white;
-    color:#666;
+    background:var(--surface-color);
+    color:var(--muted-text-color);
     padding:12px 20px;
     border-radius:10px;
     margin-top:18px;
@@ -668,7 +630,6 @@ button:focus-visible{
     font-size:14px;
 }
 
-/* Main layout with sidebar */
 .main-content{
     display:flex;
     gap:20px;
@@ -679,7 +640,7 @@ button:focus-visible{
 
 .sidebar{
     width:160px;
-    background:white;
+    background:var(--surface-color);
     padding:12px 14px;
     border-radius:10px;
     box-shadow:0px 2px 8px rgba(0,0,0,0.06);
@@ -694,12 +655,11 @@ button:focus-visible{
 }
 
 .sidebar nav ul li a{
-    color:#007bff;
+    color:var(--primary-bg);
     text-decoration:none;
     font-weight:600;
 }
 
-/* Folder tree minimal styles */
 .sidebar h3{ margin:0 0 8px 0; font-size:14px }
 .folder-list{ list-style:none; padding-left:8px }
 .folder-item{ display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 4px; border-radius:6px }
@@ -707,14 +667,13 @@ button:focus-visible{
 .folder-item.selected{ background: color-mix(in srgb, var(--primary-bg) 8%, transparent); }
 .folder-actions button{ margin-left:6px; padding:4px 6px; font-size:12px }
 
-
 /* Subjects */
 .subject-chip{
     display:inline-block;
     padding:4px 8px;
     border-radius:999px;
     font-size:12px;
-    color:#111;
+    color:var(--text-color);
     margin-right:6px;
 }
 .subject-item{ display:flex; align-items:center; justify-content:space-between; padding:6px 4px; border-radius:6px }
@@ -744,9 +703,7 @@ button:focus-visible{
 .assignment-overdue{ color:#b91c1c; font-weight:700 }
 .assignment-due{ font-weight:600 }
 
-
-
-/* Recent history panel (minimal) */
+/* Recent history panel */
 .recent-section{ margin-top:16px }
 .recent-section h2{ margin:0 0 8px 0; font-size:16px }
 .recent-container{ display:flex; flex-direction:column; gap:8px }
@@ -771,4 +728,32 @@ button:focus-visible{
     cursor:pointer;
 }
 
+/* =========================
+   Responsive Media Queries
+   ========================= */
+@media (max-width: 600px){
+    body{
+        padding:20px;
+    }
 
+    .main-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .stats{
+        flex-direction:column;
+    }
+
+    .stat{
+        width:100%;
+    }
+}
+
+@media (max-width: 520px){
+    .container{ width:100%; }
+}
