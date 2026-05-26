@@ -10,13 +10,26 @@
   <div class="container">
     <header class="site-header">
       <h1>Student Notes App</h1>
-      <div class="page-links">
-        <a class="nav-link" href="self-test.html">Weekly Self Test →</a>
-      </div>
+      <button id="themeToggle" type="button" aria-label="Toggle dark mode">🌗 Toggle Theme</button>
     </header>
 
+    <div class="page-links">
+      <a class="nav-link" href="self-test.html">Weekly Self Test →</a>
+    </div>
+
     <main class="main-content">
+      
       <aside class="sidebar">
+        <h3>Backup Operations</h3>
+        <div class="backup-controls" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
+          <button type="button" onclick="exportNotes()" style="width: 100%;">📤 Export Backup JSON</button>
+          <label class="custom-file-upload" style="width: 100%; display: block; text-align: center;">
+            <input type="file" id="importNotesFile" accept=".json" style="display: none;" onchange="importNotes(event)" />
+            📥 Import Backup JSON
+          </label>
+        </div>
+        <hr style="margin:12px 0" />
+
         <h3>Folders</h3>
         <div id="foldersTree"></div>
         <div style="margin-top:10px; display:flex; gap:8px">
@@ -66,11 +79,10 @@
         </div>
       </aside>
 
-      <div class="workspace">
+      <div class="workspace-area">
         <div class="input-area">
           <input id="noteTitle" placeholder="Title (optional)" />
           <textarea id="noteInput" placeholder="Write your note here... (Markdown supported)"></textarea>
-          
           <div class="input-row">
             <input id="noteTags" placeholder="Tags (comma separated)" />
             <input id="noteSubject" placeholder="Subject / Category (optional)" />
@@ -78,9 +90,9 @@
               <option value="">No folder</option>
             </select>
           </div>
-
+          
           <div id="sectionsArea" style="margin-top:10px">
-            <label style="display:block; margin-bottom:6px; color:var(--muted-text-color)">Sections</label>
+            <label style="display:block; margin-bottom:6px; color:var(--muted-text-color)">Sections Structure</label>
             <div id="sectionsList"></div>
             <div style="display:flex; gap:8px; margin-top:8px; align-items:center">
               <select id="newSectionType">
@@ -120,7 +132,7 @@
           </div>
         </section>
 
-        <div class="sort-controls">
+        <div class="sort-controls" style="margin-top: 15px;">
           <select id="sortOrder" onchange="sortNotes()">
             <option value="" selected disabled>Sort Alphabetically</option>
             <option value="asc">A to Z</option>
@@ -128,6 +140,8 @@
           </select>
         </div>
 
+        <div id="notesContainer"></div>
+      
         <section id="pinnedSection" class="pinned-section" aria-labelledby="pinnedHeading" style="display:none">
           <h2 id="pinnedHeading">Pinned Notes</h2>
           <div id="pinnedContainer"></div>
@@ -138,18 +152,28 @@
           <div id="favoritesContainer"></div>
         </section>
 
-        <div id="notesContainer"></div>
-
         <section id="recentSection" class="recent-section" aria-labelledby="recentHeading" style="display:block">
-          <h2 id="recentHeading">Recent</h2>
+          <h2 id="recentHeading">Recent Notes</h2>
           <div id="recentContainer" class="recent-container"></div>
         </section>
       </div>
+
     </main>
 
     <footer class="site-footer">
       <p>© 2026 Student Notes App. All rights reserved.</p>
     </footer>
+  </div>
+
+  <div id="customModalOverlay" class="custom-modal-overlay" style="display: none;" aria-hidden="true">
+    <div class="custom-modal">
+      <h3 id="customModalTitle">Notification</h3>
+      <p id="customModalMessage"></p>
+      <div class="custom-modal-actions">
+        <button id="customModalCancelBtn" class="modal-btn-secondary">Cancel</button>
+        <button id="customModalConfirmBtn" class="modal-btn-primary">Confirm</button>
+      </div>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
